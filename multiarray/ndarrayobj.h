@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct ndarray_descr{
+    size_t elsize;
+    int type;
+} NdarrayDescr;
+
+
+
 /*
     ndarray struct
 */
@@ -22,8 +29,11 @@ typedef struct ndarray{
 
     // the number of bytes to go to the next value in each dimension
     size_t *strides;
+
+    // element describer
+    NdarrayDescr eldescr;
 } Ndarray;
 
-Ndarray *Ndarray_Alloc(size_t*, size_t, size_t);
+Ndarray *Ndarray_Alloc(size_t*, size_t, size_t, int);
 
 #endif
